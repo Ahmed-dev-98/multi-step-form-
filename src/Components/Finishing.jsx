@@ -47,7 +47,7 @@ const Finishing = () => {
             Double-check everything is looks ok before confirming
           </p>
         </div>
-        <div className="bg-[#f8f9fe] p-2">
+        <div className="bg-[#c8e5de] p-2">
           <div className="plan flex justify-between items-center p-2  mb-3">
             <div className="text-xs font-semibold">
               <p className="text-[#00295b] font-bold text-sm">

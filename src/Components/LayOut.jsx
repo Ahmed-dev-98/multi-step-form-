@@ -29,7 +29,7 @@ export const LayOut = () => {
         <ImgComponent />
         <FormContext.Provider value={{ formData, setFormData }}>
           <div className="flex flex-col justify-center items-center">
-            <div className="bg-red-0 min-h-[27rem] min-w-[27rem] p-5">
+            <div className="bg-red-0 min-h-[27rem] min-w-[27rem] p-5 ">
               {currentStep === 1 && <PersonalInfo />}
               {currentStep === 2 && <PickPlan />}
               {currentStep === 3 && <PickAdds />}

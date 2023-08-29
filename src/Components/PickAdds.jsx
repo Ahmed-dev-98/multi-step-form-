@@ -10,8 +10,7 @@ const PickAdds = () => {
 
   const [isChecked, setIsChecked] = useState([]);
   const [checkedBoxs, setCheckedBoxs] = useState([]);
-  const [onHold, setOnHold] = useState(true);
-
+const onHold = false
   const addsPlan = [
     {
       name: "online service",
@@ -39,7 +38,6 @@ const PickAdds = () => {
       if (!isChecked.includes(plan.name)) {
         setIsChecked((prev) => (prev = [...prev, plan.name]));
       }
-      return setOnHold(false);
     } else if (checkedBoxs.filter((box) => box.name === plan.name).length > 0) {
       setCheckedBoxs(
         (prev) => (prev = prev.filter((box) => box.name !== plan.name))
@@ -47,33 +45,15 @@ const PickAdds = () => {
       setIsChecked(
         (prev) => (prev = isChecked.filter((item) => item !== plan.name))
       );
-      setOnHold(true);
     }
   };
-  const handleChekc = (plan) => {
-    if (checkedBoxs.filter((box) => box.name === plan.name).length === 0) {
-      setCheckedBoxs((prev) => (prev = [...prev, plan]));
-      if (!isChecked.includes(plan.name)) {
-        setIsChecked((prev) => (prev = [...prev, plan.name]));
-      }
-      console.log(isChecked);
-      return setOnHold(false);
-    } else if (checkedBoxs.filter((box) => box.name === plan.name).length > 0) {
-      setCheckedBoxs(
-        (prev) => (prev = prev.filter((box) => box.name !== plan.name))
-      );
-      setIsChecked(
-        (prev) => (prev = isChecked.filter((item) => item !== plan.name))
-      );
-      console.log(isChecked);
-      setOnHold(true);
-    }
-  };
+
   const onSubmit = (e) => {
     const userInfo = { ...formData };
     userInfo["adds"] = checkedBoxs;
     setFormData(userInfo);
-    handleNext(currentStep, setCurrentStep , onHold , e);
+    handleNext(currentStep, setCurrentStep,onHold, e);
+    console.log(e.target);
   };
   useEffect(() => {}, [formData.isMonthly]);
 
@@ -106,6 +86,7 @@ const PickAdds = () => {
                   >
                     <div>
                       <input
+                        readOnly
                         type="checkbox"
                         name={`${plan.name}`}
                         checked={isChecked.includes(plan.name) ? true : false}
@@ -134,7 +115,7 @@ const PickAdds = () => {
             : ""}
         </div>
       </div>
-      <ControllSteps onSubmit={onSubmit} onHold={onHold} />
+      <ControllSteps onSubmit={onSubmit} />
     </>
   );
 };

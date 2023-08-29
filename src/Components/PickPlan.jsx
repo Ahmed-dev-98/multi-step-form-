@@ -34,7 +34,7 @@ const PickPlan = () => {
   const [isMonthly, setIsMonthly] = useState(formData.isMonthly);
   const [onHold, setOnHold] = useState(true);
   const [isPlalnClicked, setIsPlanClicked] = useState("");
-  const {currentStep , setCurrentStep} = useContext(StepContext)
+  const { currentStep, setCurrentStep } = useContext(StepContext);
 
   const userInfo = { ...formData };
 
@@ -59,7 +59,6 @@ const PickPlan = () => {
     setFormData(userInfo);
     e.preventDefault();
     handleNext(currentStep, setCurrentStep, onHold, e);
-
   };
 
   const togglePrice = () => {
@@ -87,8 +86,10 @@ const PickPlan = () => {
               key={Math.random()}
               id={`${item.name}`}
               className={`flex flex-col justify-between gap-8 p-3 border ${
-                isPlalnClicked === item.name ? "bg-sky-200" : ""
-              } border-blue-700 w-[8rem] rounded-xl`}
+                isPlalnClicked === item.name
+                  ? "bg-sky-100  border-blue-700"
+                  : ""
+              }  w-[8rem] rounded-xl`}
               onClick={() => clickedPlan(item)}
             >
               <div>
@@ -99,17 +100,18 @@ const PickPlan = () => {
                   <p className="text-[#1d355b] font-semibold">{item.name}</p>
                   <span className="text-[#b4b6ba]">
                     {isMonthly
-                      ? `${item.monthlyPrice}/mo`
-                      : `${item.yearlyPrice}/yr`}
+                      ? `$${item.monthlyPrice}/mo`
+                      : `$${item.yearlyPrice}/yr`}
                   </span>
                 </div>
-                {isMonthly ? (
-                  ""
-                ) : (
-                  <span className="text-[#4c70a1] font-semibold ">
-                    2 months free
-                  </span>
-                )}
+
+                <span
+                  className={`${
+                    isMonthly ? "opacity-0" : "opacity-1"
+                  } transition-all duration-700 text-[#4c70a1] font-semibold whitespace-nowrap`}
+                >
+                  2 months free
+                </span>
               </div>
             </div>
           ))}

@@ -32,9 +32,9 @@ const ImgComponent = () => {
   useEffect(() => {}, [currentStep]);
 
   return (
-    <div className="left-side-container h-[70%] ">
-      <div className="relative px-2 py-4">
-        <img src={mobile} alt="" className="h" />
+    <div className="left-side-container h-[70%]  sm:transform sm:rotae-90 relative left-[15rnem] -top-[12nrem] z-[10] ">
+      <div className=" px-2 py-4 ">
+        <img src={mobile} alt="" className="h-[500px]" />
         <div className=" top-[6%] absolute w-full ">
           <ul className="  items-center justify-start w-full flex flex-col gap-6 ">
             {mobileContent.map((ele) => (

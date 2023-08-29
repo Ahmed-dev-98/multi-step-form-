@@ -27,12 +27,16 @@ function PersonalInfo() {
 
   const validation = () => {
     const userSchema = Joi.object({
-      name: Joi.string().min(3).max(30).required().messages({
-        "string.min": `"name" length shoul be at least 3 characters`,
-        "string.max": `"name" length shoul be at max 30 characters`,
-        "any.required": `"email" is a required field`,
-        "any.string": `"should not contain numbers`,
-      }),
+      name: Joi.string()
+        .min(3)
+        .max(30)
+        .messages({
+          "string.min": `"name" length shoul be at max 30 characters`,
+          "string.max": `"name" length shoul be at max 30 characters`,
+          "any.required": `"name" is a required field`,
+          "any.string": `"should not contain numbers`,
+        })
+        .required(),
       email: Joi.string()
         .required()
         .email({
@@ -79,7 +83,7 @@ function PersonalInfo() {
     <>
       <div className="container  flex bg-transparent  justify-start items-start  flex-col text-[#0b2b4d] text-sm ">
         <div className="mb-6">
-          <h3 className="font-bold mb-3 text-3xl text-[#0b2b4d]">
+          <h3 className="font-bold mb-3 text-3xl text-[#0b2b4d] font-ubunto">
             Personal Info
           </h3>
           <p className="text-[#b1b1b8] text-sm">
@@ -107,7 +111,7 @@ function PersonalInfo() {
                       key={i}
                       className=" my-1 py-2 px-4 text-xs rounded-xl text-center bg-[#fad2e1] w-[90%]  text-[#7c193d]"
                     >
-                      <p className="font-sans">{err.message[0]} </p>
+                      <p className="font-sans">{err.message} </p>
                     </div>
                   )
               )
